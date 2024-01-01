@@ -1,16 +1,80 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #verification_heading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #verification_subtext {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .code-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .code {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 18px;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <div>
+        <h1 id="verification_heading">OTP Verification</h1>
+        <p id="verification_subtext">Enter the 6-digit OTP sent to your mobile number</p>
+        <div class="code-container">
+            <input class="code" type="text" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this)" autofocus>
+            <input class="code" type="text" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this)">
+            <input class="code" type="text" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this)">
+            <input class="code" type="text" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this)">
+            <input class="code" type="text" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this)">
+            <input class="code" type="text" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this)">
+        </div>
+    </div>
 
+    <script>
+        function handleInput(input) {
+            if (input.value.length === 1) {
+                const nextInput = input.nextElementSibling;
+                if (nextInput) {
+                    nextInput.focus();
+                }
+            }
+        }
+
+        function handleBackspace(input) {
+            if (event.key === 'Backspace' && input.value.length === 0) {
+                const prevInput = input.previousElementSibling;
+                if (prevInput) {
+                    prevInput.focus();
+                }
+            }
+        }
+    </script>
 </body>
-
 </html>
